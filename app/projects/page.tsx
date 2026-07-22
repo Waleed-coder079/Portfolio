@@ -5,6 +5,7 @@ import { ProjectGrid } from "@/components/project/project-grid";
 export const metadata: Metadata = {
   title: "Projects",
   description: "Voice AI, RAG, automation, and computer vision projects by Waleed Ali.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

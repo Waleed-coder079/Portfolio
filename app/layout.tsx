@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeScript } from "@/components/theme/theme-script";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,6 +29,9 @@ export const metadata: Metadata = {
     template: "%s — Waleed Ali | Full Stack AI Engineer",
   },
   description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     url: siteConfig.url,
@@ -78,6 +82,7 @@ export default function RootLayout({
             <Footer />
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

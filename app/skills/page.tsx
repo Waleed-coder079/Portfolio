@@ -8,6 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 export const metadata: Metadata = {
   title: "Skills",
   description: "Full skill breakdown by category — Waleed Ali, Full Stack AI Engineer.",
+  alternates: { canonical: "/skills" },
 };
 
 export default function SkillsPage() {

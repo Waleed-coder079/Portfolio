@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ResumeDownloadLink } from "@/components/sections/resume-download-link";
 import { siteConfig } from "@/lib/site-config";
 
 export function Hero() {
@@ -26,9 +27,7 @@ export function Hero() {
           <Link href="/projects">View Projects</Link>
         </Button>
         <Button asChild variant="secondary">
-          <a href={siteConfig.resumeUrl} download>
-            Download Résumé
-          </a>
+          <ResumeDownloadLink />
         </Button>
       </div>
     </section>

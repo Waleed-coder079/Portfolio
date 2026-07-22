@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllProjects, getProjectBySlug } from "@/content/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { siteConfig } from "@/lib/site-config";
 
 export function generateStaticParams() {
   return getAllProjects().map((project) => ({ slug: project.slug }));
@@ -17,6 +18,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: project.title,
     description: project.tagline,
+    alternates: { canonical: `/projects/${project.slug}` },
   };
 }
 
@@ -25,8 +27,24 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.title,
+    description: project.tagline,
+    applicationCategory: project.category,
+    author: { "@type": "Person", name: siteConfig.name, url: siteConfig.url },
+    url: `${siteConfig.url}/projects/${project.slug}`,
+    ...(project.links?.demo && { sameAs: project.links.demo }),
+    ...(project.links?.github && { codeRepository: project.links.github }),
+  };
+
   return (
     <article className="mx-auto w-full max-w-3xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       <p className="text-sm text-muted-foreground">{project.tagline}</p>
       <h1 className="mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">{project.title}</h1>
 

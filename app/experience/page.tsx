@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "Experience",
   description: "Professional experience — Entropik Labs and GulzarSoft.",
+  alternates: { canonical: "/experience" },
 };
 
 export default function ExperiencePage() {
