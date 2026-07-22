@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { sendContactEmail } from "@/app/actions/sendContactEmail";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site-config";
 
@@ -42,14 +43,18 @@ export function ContactForm() {
     setStatus("submitting");
 
     try {
-      const name = String(formData.get("name"));
-      const email = String(formData.get("email"));
-      const reason = String(formData.get("reason") ?? "");
-      const message = String(formData.get("message"));
+      const result = await sendContactEmail({
+        name: String(formData.get("name")),
+        email: String(formData.get("email")),
+        reason: String(formData.get("reason") ?? ""),
+        message: String(formData.get("message")),
+        company: String(formData.get("company") ?? ""),
+      });
 
-      const subject = encodeURIComponent(`Portfolio contact${reason ? ` — ${reason}` : ""} from ${name}`);
-      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-      window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+      if (!result.ok) {
+        setStatus("error");
+        return;
+      }
 
       setStatus("success");
       form.reset();
@@ -140,18 +145,18 @@ export function ContactForm() {
       </div>
 
       <Button type="submit" variant="primary" loading={status === "submitting"}>
-        {status === "submitting" ? "Opening your email client…" : "Send Message"}
+        {status === "submitting" ? "Sending…" : "Send Message"}
       </Button>
 
       <p aria-live="polite" className="text-sm">
         {status === "success" && (
           <span className="text-accent">
-            Thanks — your email client should have opened with the message ready to send.
+            Thanks — your message has been sent. I&apos;ll get back to you soon.
           </span>
         )}
         {status === "error" && (
           <span className="text-red-500">
-            Couldn&apos;t open your email client — please email {siteConfig.email} directly.
+            Something went wrong — please email {siteConfig.email} directly.
           </span>
         )}
       </p>
