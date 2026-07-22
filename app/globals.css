@@ -66,6 +66,38 @@ body {
   box-shadow: 0 0 0 1px var(--border);
 }
 
+/* Hero glow-beam accent — inspired by dark AI-product hero patterns */
+.hero-glow {
+  position: absolute;
+  inset: -30% -10% -10%;
+  z-index: -1;
+  pointer-events: none;
+  background: conic-gradient(
+    from 180deg at 50% 40%,
+    transparent 0deg,
+    var(--accent) 50deg,
+    #a855f7 130deg,
+    transparent 200deg,
+    transparent 360deg
+  );
+  filter: blur(90px);
+  opacity: 0.4;
+  animation: hero-glow-spin 18s linear infinite;
+}
+
+[data-theme="light"] .hero-glow {
+  opacity: 0.14;
+}
+
+@keyframes hero-glow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
