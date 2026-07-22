@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { getAllProjects, getProjectBySlug } from "@/content/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { GitHubIcon } from "@/components/icons/social-icons";
+import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -56,7 +59,26 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         ))}
       </div>
 
-      {!project.links?.demo && !project.links?.github && (
+      {project.links?.demo || project.links?.github ? (
+        <div className="mt-6 flex flex-wrap gap-3">
+          {project.links.demo && (
+            <Button asChild variant="primary" size="sm">
+              <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
+                Live Demo
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </Button>
+          )}
+          {project.links.github && (
+            <Button asChild variant="secondary" size="sm">
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer">
+                <GitHubIcon className="h-4 w-4" />
+                Source
+              </a>
+            </Button>
+          )}
+        </div>
+      ) : (
         <p className="mt-4 text-xs text-muted-foreground">
           Live demo / source links coming soon.
         </p>

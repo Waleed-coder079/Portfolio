@@ -57,6 +57,7 @@ export const projects: Project[] = [
       { name: "Deepgram", why: "Low-latency speech-to-text for caller input." },
       { name: "Langfuse", why: "Tracing, logging, and prompt evaluation for production observability." },
     ],
+    links: { github: "https://github.com/Waleed-coder079/livekit_doctor_receponist" },
     hasScreenshots: false,
   },
   {
@@ -129,6 +130,7 @@ export const projects: Project[] = [
       { name: "Groq (LLaMA 3.3 70B)", why: "Fast inference for low-latency RAG answers." },
       { name: "Streamlit", why: "Quick interactive UI for the chatbot." },
     ],
+    links: { github: "https://github.com/Waleed-coder079/youtube-rag-chatbot" },
     hasScreenshots: false,
   },
   {

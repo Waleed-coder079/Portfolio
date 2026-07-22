@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { experience } from "@/content/experience";
 import { Badge } from "@/components/ui/badge";
 
@@ -26,7 +27,16 @@ export default function ExperiencePage() {
             <p className="text-xs text-muted-foreground">
               {entry.start} – {entry.end} · {entry.location}
             </p>
-            <h2 className="mt-1 text-lg font-semibold">
+            <h2 className="mt-1 flex items-center gap-2 text-lg font-semibold">
+              {entry.companyLogo && (
+                <Image
+                  src={entry.companyLogo}
+                  alt={entry.company}
+                  width={24}
+                  height={24}
+                  className="h-6 w-6 rounded-sm object-contain"
+                />
+              )}
               {entry.role} <span className="text-muted-foreground">· {entry.company}</span>
             </h2>
             <ul className="mt-3 flex flex-col gap-2 text-sm text-muted-foreground">

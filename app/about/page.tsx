@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -10,7 +11,16 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <section className="mx-auto w-full max-w-(--container-content) px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">About</h1>
+      <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        <Image
+          src={siteConfig.profileImage}
+          alt={siteConfig.name}
+          width={112}
+          height={112}
+          className="h-24 w-24 shrink-0 rounded-full border border-border object-cover"
+        />
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">About</h1>
+      </div>
 
       <div className="mt-8 flex max-w-2xl flex-col gap-5 text-muted-foreground">
         <p>

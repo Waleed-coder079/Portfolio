@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { experience } from "@/content/experience";
 import { Badge } from "@/components/ui/badge";
@@ -20,7 +21,16 @@ export function ExperienceHighlights() {
             <p className="text-xs text-muted-foreground">
               {entry.start} – {entry.end}
             </p>
-            <h3 className="font-semibold">
+            <h3 className="flex items-center gap-2 font-semibold">
+              {entry.companyLogo && (
+                <Image
+                  src={entry.companyLogo}
+                  alt={entry.company}
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 rounded-sm object-contain"
+                />
+              )}
               {entry.role} · {entry.company}
             </h3>
             <div className="mt-2 flex flex-wrap gap-1.5">

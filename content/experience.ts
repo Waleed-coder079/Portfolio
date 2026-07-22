@@ -4,6 +4,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Full Stack AI Engineer",
     company: "Entropik Labs",
+    companyLogo: "/images/logos/entropik.png",
     location: "Remote",
     start: "Jan 2026",
     end: "Present",
@@ -17,6 +18,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "AI Engineer",
     company: "GulzarSoft",
+    companyLogo: "/images/logos/gulzarsoft.jpg",
     location: "Full-Time",
     start: "Sep 2025",
     end: "Jan 2026",
@@ -31,6 +33,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "AI Engineer Intern",
     company: "GulzarSoft",
+    companyLogo: "/images/logos/gulzarsoft.jpg",
     location: "Full-Time",
     start: "Jun 2025",
     end: "Aug 2025",

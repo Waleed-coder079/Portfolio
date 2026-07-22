@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# staging area for content-gap assets (copied into public/ once wired in)
+/content_gap
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
