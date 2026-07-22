@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/social-icons";
+import { EmailLink } from "@/components/nav/email-link";
 import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
@@ -39,13 +39,7 @@ export function Footer() {
           >
             <GitHubIcon className="h-4 w-4" />
           </a>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            aria-label="Email"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-          </a>
+          <EmailLink className="text-muted-foreground hover:text-foreground" />
         </div>
       </div>
       <div className="border-t border-border px-6 py-4 text-center text-xs text-muted-foreground">

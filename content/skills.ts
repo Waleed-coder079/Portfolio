@@ -40,7 +40,6 @@ export const skillCategories: SkillCategory[] = [
     name: "Frameworks & Libraries",
     skills: [
       { name: "FastAPI", core: true, usedIn: ["voilo"] },
-      { name: "Django" },
       { name: "Flask" },
       { name: "LangChain", core: true, usedIn: ["youtube-video-qa-chatbot"] },
       { name: "LangGraph" },
@@ -88,7 +87,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Runpod", usedIn: ["urdu-voice-to-voice-rag-agent"] },
       { name: "Vercel", usedIn: ["urdu-voice-to-voice-rag-agent"] },
-      { name: "Linux" },
       { name: "GPU Deployment" },
     ],
   },

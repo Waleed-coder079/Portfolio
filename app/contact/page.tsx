@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/contact-form";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/social-icons";
-import { Mail, MapPin } from "lucide-react";
+import { EmailLink } from "@/components/nav/email-link";
+import { MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -18,10 +19,7 @@ export default function ContactPage() {
         <p className="mt-4 max-w-md text-muted-foreground">{siteConfig.availability}</p>
 
         <div className="mt-8 flex flex-col gap-3 text-sm">
-          <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-            <Mail className="h-4 w-4" aria-hidden="true" />
-            {siteConfig.email}
-          </a>
+          <EmailLink showLabel className="flex items-center gap-2 text-muted-foreground hover:text-foreground" />
           <p className="flex items-center gap-2 text-muted-foreground">
             <MapPin className="h-4 w-4" aria-hidden="true" />
             {siteConfig.location} · Open to Remote
