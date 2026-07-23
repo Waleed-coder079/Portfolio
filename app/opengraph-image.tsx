@@ -8,7 +8,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function Image() {
-  const photo = readFileSync(join(process.cwd(), "public/images/profile.jpg")).toString("base64");
+  const photo = readFileSync(join(process.cwd(), "public", siteConfig.profileImage)).toString("base64");
 
   return new ImageResponse(
     (
@@ -26,7 +26,7 @@ export default function Image() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
         <img
-          src={`data:image/jpeg;base64,${photo}`}
+          src={`data:image/png;base64,${photo}`}
           width={280}
           height={280}
           style={{ borderRadius: "50%", objectFit: "cover", border: "4px solid #3f3f46" }}

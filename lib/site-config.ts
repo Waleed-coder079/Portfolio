@@ -10,7 +10,7 @@ export const siteConfig = {
     github: "https://github.com/Waleed-coder079",
   },
   resumeUrl: "/resume/waleed_v4.pdf",
-  profileImage: "/images/profile.jpg",
+  profileImage: "/images/profile.png",
   navLinks: [
     { href: "/about", label: "About" },
     { href: "/experience", label: "Experience" },
