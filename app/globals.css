@@ -66,35 +66,82 @@ body {
   box-shadow: 0 0 0 1px var(--border);
 }
 
-/* Hero glow-beam accent — inspired by dark AI-product hero patterns */
-.hero-glow {
+/* Hero glow-beam accent — inspired by dark AI-product hero patterns.
+   Each band is a huge square, rotated around the hero's center, containing a
+   horizontal gradient stripe. Because the square is far larger than the
+   viewport, the stripe always crosses through the center and runs off both
+   edges no matter the current rotation angle — so it reads as a diagonal
+   ribbon sweeping slowly through the whole hero, never fully disappearing. */
+.hero-glow-wrap {
   position: absolute;
-  inset: -30% -10% -10%;
+  inset: 0;
   z-index: -1;
+  overflow: hidden;
   pointer-events: none;
-  background: conic-gradient(
-    from 180deg at 50% 40%,
-    transparent 0deg,
-    var(--accent) 50deg,
-    #a855f7 130deg,
-    transparent 200deg,
-    transparent 360deg
+}
+
+.hero-glow-band {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250vmax;
+  height: 250vmax;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.hero-glow-band-a {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent calc(50% - 220px),
+    rgba(34, 211, 238, 0.08) calc(50% - 130px),
+    rgba(59, 130, 246, 0.2) calc(50% - 65px),
+    rgba(168, 85, 247, 0.32) calc(50% - 16px),
+    rgba(224, 231, 255, 0.4) 50%,
+    rgba(232, 121, 249, 0.32) calc(50% + 16px),
+    rgba(59, 130, 246, 0.2) calc(50% + 65px),
+    rgba(34, 211, 238, 0.08) calc(50% + 130px),
+    transparent calc(50% + 220px),
+    transparent 100%
   );
-  filter: blur(90px);
-  opacity: 0.4;
-  animation: hero-glow-spin 18s linear infinite;
+  animation: hero-glow-spin-a 22s linear infinite;
 }
 
-[data-theme="light"] .hero-glow {
-  opacity: 0.14;
+.hero-glow-band-b {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent calc(50% - 120px),
+    rgba(244, 114, 182, 0.06) calc(50% - 70px),
+    rgba(168, 85, 247, 0.14) calc(50% - 25px),
+    rgba(224, 231, 255, 0.22) 50%,
+    rgba(59, 130, 246, 0.14) calc(50% + 25px),
+    rgba(244, 114, 182, 0.06) calc(50% + 70px),
+    transparent calc(50% + 120px),
+    transparent 100%
+  );
+  animation: hero-glow-spin-b 31s linear infinite;
 }
 
-@keyframes hero-glow-spin {
+[data-theme="light"] .hero-glow-wrap {
+  opacity: 0.35;
+}
+
+@keyframes hero-glow-spin-a {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(20deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(380deg);
+  }
+}
+
+@keyframes hero-glow-spin-b {
+  from {
+    transform: translate(-50%, -50%) rotate(150deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-210deg);
   }
 }
 
